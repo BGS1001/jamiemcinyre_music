@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://bgs1001.github.io/jamiemcinyre_music/sitemap.xml

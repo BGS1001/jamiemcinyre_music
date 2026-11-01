@@ -32,6 +32,30 @@ Settings → Pages → Source: *Deploy from a branch* → pick the branch and `/
 - **Streaming links:** the “Listen” row in the Music section. Add direct Spotify / Apple Music
   links there when you have them (currently Linktree, Deezer, Bandcamp).
 
+## Quality checks done
+
+- Accessibility: 0 violations from axe-core (WCAG 2.1 AA + best practice) on `index.html`
+  and `404.html` at desktop and phone widths. The rust accent `#a94f2a` was chosen to pass AA
+  with white text and as text on the cream background — keep that in mind if you change it.
+- Works with JavaScript off (all content and every tour date stay visible).
+- Tour list verified to keep a show listed through its own day and to switch to the
+  "follow on Instagram" message once every date has passed.
+- Print stylesheet: prints as a clean one-sheet (no dark backgrounds, links spelled out).
+
+## Files
+
+| File | Purpose |
+| --- | --- |
+| `index.html` | The page, plus schema.org data for the artist and tour dates |
+| `styles.css`, `main.js` | Styling; past-show hiding, nav, optional hero photo, fade-ins |
+| `404.html` | Page shown for broken links on GitHub Pages |
+| `assets/og.png` | Link-preview image for social media / messaging |
+| `assets/favicon.svg`, `assets/apple-touch-icon.png` | Browser and iPhone home-screen icons |
+| `robots.txt`, `sitemap.xml` | Search-engine hints (assume the GitHub Pages address) |
+
+When tour dates change, also update the matching `"event"` entries in the
+`<script type="application/ld+json">` block in `index.html`.
+
 ## To verify before launch
 
 Content was compiled from public listings and press, since Instagram and Linktree couldn't be

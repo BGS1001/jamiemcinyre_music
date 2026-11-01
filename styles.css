@@ -3,7 +3,8 @@
   --ink-2: #0f2420;
   --paper: #f3ecdf;      /* cream */
   --paper-2: #e8dfcd;
-  --rust: #c8643a;       /* turf-fire accent */
+  --rust: #a94f2a;       /* turf-fire accent (AA with white and on paper) */
+  --rust-deep: #8c3f20;
   --rust-2: #e08a5e;
   --sea: #4f7a74;
   --muted: #5d6b67;
@@ -106,7 +107,7 @@ h1, h2, h3 { font-family: var(--serif); font-weight: 500; line-height: 1.05; mar
 }
 .btn:hover { transform: translateY(-1px); }
 .btn--solid { background: var(--rust); color: #fff; }
-.btn--solid:hover { background: var(--rust-2); }
+.btn--solid:hover { background: var(--rust-deep); }
 .btn--ghost { border-color: rgba(243,236,223,.6); color: var(--paper); }
 .btn--ghost:hover { background: rgba(243,236,223,.1); }
 .btn--small { padding: 9px 18px; font-size: 14px; background: var(--paper); color: var(--ink); }
@@ -198,7 +199,7 @@ h1, h2, h3 { font-family: var(--serif); font-weight: 500; line-height: 1.05; mar
 /* ---------- FOLLOW ---------- */
 .follow { background: var(--rust); color: #fff; padding: clamp(48px, 7vw, 80px) 0; }
 .follow__inner { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 24px; }
-.follow .eyebrow { color: rgba(255,255,255,.8); }
+.follow .eyebrow { color: #fff; }
 .follow h2 { font-size: clamp(28px, 4vw, 44px); font-weight: 400; max-width: 20ch; }
 .follow .btn--solid { background: var(--ink); }
 .follow .btn--solid:hover { background: var(--ink-2); }
@@ -238,4 +239,18 @@ h1, h2, h3 { font-family: var(--serif); font-weight: 500; line-height: 1.05; mar
   html { scroll-behavior: auto; }
   .js-reveal .reveal { opacity: 1; transform: none; transition: none; }
   .btn { transition: none; }
+}
+
+@media print {
+  .nav, .hero__scene, .hero__waves, .hero__cta, .cover, .listen__links, .show .btn, .follow, .skip { display: none !important; }
+  .hero { min-height: 0; color: var(--ink); background: none; }
+  .hero__inner { padding: 0 var(--gutter) 24px; }
+  .release { grid-template-columns: 1fr; break-inside: avoid; }
+  .show { grid-template-columns: 120px 1fr; break-inside: avoid; }
+  .section { padding: 32px 0; }
+  .footer { background: none; color: var(--ink); padding-top: 24px; }
+  .section--dark { background: none; color: var(--ink); }
+  .show__where span, .section--dark .section__sub { color: var(--muted); }
+  .reveal { opacity: 1 !important; transform: none !important; }
+  a[href^="http"]::after { content: " (" attr(href) ")"; font-size: 11px; word-break: break-all; }
 }
