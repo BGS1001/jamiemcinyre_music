@@ -64,16 +64,23 @@ h1, h2, h3 { font-family: var(--serif); font-weight: 500; line-height: 1.05; mar
   min-height: 100svh;
   display: flex; align-items: center;
   color: var(--paper);
-  /* Drop a photo at assets/hero.jpg and it appears under the overlay automatically. */
   background:
-    linear-gradient(180deg, rgba(15,36,32,.55) 0%, rgba(15,36,32,.35) 45%, rgba(15,36,32,.9) 100%),
-    url("assets/hero.jpg") center 30% / cover no-repeat,
     radial-gradient(120% 80% at 80% 10%, #3c6660 0%, transparent 60%),
     radial-gradient(90% 70% at 10% 90%, #7a3b22 0%, transparent 55%),
     var(--ink-2);
   overflow: hidden;
 }
+/* Illustrated Galway Bay; replaced by a real photo via data-photo on .hero (see main.js). */
+.hero__scene { position: absolute; inset: 0; width: 100%; height: 100%; }
+.hero.has-photo {
+  background:
+    linear-gradient(180deg, rgba(15,36,32,.55) 0%, rgba(15,36,32,.35) 45%, rgba(15,36,32,.9) 100%),
+    var(--hero-photo) center 30% / cover no-repeat,
+    var(--ink-2);
+}
+.hero.has-photo .hero__scene { display: none; }
 .hero__inner {
+  position: relative; z-index: 1;
   width: 100%; max-width: var(--wrap); margin: 0 auto;
   padding: 120px var(--gutter) 160px;
 }
@@ -188,6 +195,18 @@ h1, h2, h3 { font-family: var(--serif); font-weight: 500; line-height: 1.05; mar
   font-size: 14px; font-weight: 500;
 }
 
+/* ---------- FOLLOW ---------- */
+.follow { background: var(--rust); color: #fff; padding: clamp(48px, 7vw, 80px) 0; }
+.follow__inner { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 24px; }
+.follow .eyebrow { color: rgba(255,255,255,.8); }
+.follow h2 { font-size: clamp(28px, 4vw, 44px); font-weight: 400; max-width: 20ch; }
+.follow .btn--solid { background: var(--ink); }
+.follow .btn--solid:hover { background: var(--ink-2); }
+
+/* ---------- REVEAL ---------- */
+.js-reveal .reveal { opacity: 0; transform: translateY(18px); transition: opacity .7s ease, transform .7s ease; }
+.js-reveal .reveal.is-in { opacity: 1; transform: none; }
+
 /* ---------- FOOTER ---------- */
 .footer { background: var(--ink-2); color: var(--paper); padding: 56px 0 40px; }
 .footer__inner { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 20px; }
@@ -206,6 +225,7 @@ h1, h2, h3 { font-family: var(--serif); font-weight: 500; line-height: 1.05; mar
   .nav__brand { font-size: 18px; }
   .nav__links { gap: 14px; }
   .nav__links li:last-child { display: none; }
+  .hero__sun { display: none; }
   .release { grid-template-columns: 1fr; }
   .cover { max-width: 220px; }
   .show { grid-template-columns: 1fr auto; gap: 6px 16px; }
@@ -216,5 +236,6 @@ h1, h2, h3 { font-family: var(--serif); font-weight: 500; line-height: 1.05; mar
 
 @media (prefers-reduced-motion: reduce) {
   html { scroll-behavior: auto; }
+  .js-reveal .reveal { opacity: 1; transform: none; transition: none; }
   .btn { transition: none; }
 }

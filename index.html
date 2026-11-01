@@ -8,11 +8,43 @@
   <meta property="og:title" content="Jamie McIntyre">
   <meta property="og:description" content="Modern folk from the West of Ireland. New EP For Folk Sake out now.">
   <meta property="og:type" content="website">
+  <meta property="og:url" content="https://bgs1001.github.io/jamiemcinyre_music/">
+  <meta property="og:image" content="https://bgs1001.github.io/jamiemcinyre_music/assets/og.png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="theme-color" content="#16302b">
+  <link rel="canonical" href="https://bgs1001.github.io/jamiemcinyre_music/">
   <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300..800;1,9..144,300..600&family=Inter+Tight:wght@400;500;600&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="styles.css">
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "MusicGroup",
+    "name": "Jamie McIntyre",
+    "genre": ["Folk", "Singer-songwriter"],
+    "foundingLocation": { "@type": "Place", "name": "Galway, Ireland" },
+    "url": "https://bgs1001.github.io/jamiemcinyre_music/",
+    "sameAs": [
+      "https://www.instagram.com/jamiemcintyre_music/",
+      "https://linktr.ee/jamiemcintyre",
+      "https://jamiemcintyre.bandcamp.com",
+      "https://www.deezer.com/artist/6405772"
+    ],
+    "track": [{ "@type": "MusicRecording", "name": "Over Galway Town" }],
+    "album": [{ "@type": "MusicAlbum", "name": "For Folk Sake", "albumReleaseType": "https://schema.org/EPRelease", "datePublished": "2025-09-26" }],
+    "event": [
+      { "@type": "MusicEvent", "name": "Jamie McIntyre — Belfast", "startDate": "2026-11-19", "location": { "@type": "Place", "name": "Limelight 1", "address": "Belfast, UK" }, "offers": { "@type": "Offer", "url": "https://www.ticketmaster.ie/artist/5585254" } },
+      { "@type": "MusicEvent", "name": "Jamie McIntyre — Dublin", "startDate": "2026-11-21", "location": { "@type": "Place", "name": "The Academy", "address": "Dublin, Ireland" }, "offers": { "@type": "Offer", "url": "https://www.ticketmaster.ie/artist/5585254" } },
+      { "@type": "MusicEvent", "name": "Jamie McIntyre — Limerick", "startDate": "2026-11-27", "location": { "@type": "Place", "name": "Live at the Big Top", "address": "Limerick, Ireland" }, "offers": { "@type": "Offer", "url": "https://www.ticketmaster.ie/artist/5585254" } },
+      { "@type": "MusicEvent", "name": "Jamie McIntyre — Cork", "startDate": "2026-11-28", "location": { "@type": "Place", "name": "Cork City Hall", "address": "Cork, Ireland" }, "offers": { "@type": "Offer", "url": "https://www.mcd.ie/artists/jamie-mcintyre" } },
+      { "@type": "MusicEvent", "name": "Jamie McIntyre — Galway", "startDate": "2026-12-18T19:00", "location": { "@type": "Place", "name": "Leisureland", "address": "Salthill, Galway, Ireland" }, "offers": { "@type": "Offer", "url": "https://www.mcd.ie/artists/jamie-mcintyre" } }
+    ]
+  }
+  </script>
 </head>
 <body>
   <a class="skip" href="#main">Skip to content</a>
@@ -31,11 +63,45 @@
 
   <main id="main">
     <!-- HERO -->
-    <section class="hero" id="top">
+    <!-- To use a photo instead of the illustration, add assets/hero.jpg and set data-photo="assets/hero.jpg" -->
+    <section class="hero" id="top" data-photo="">
+      <svg class="hero__scene" viewBox="0 0 1440 900" preserveAspectRatio="xMidYMax slice" aria-hidden="true">
+        <defs>
+          <radialGradient id="sun" cx="50%" cy="50%" r="50%">
+            <stop offset="0" stop-color="#f2a678"/>
+            <stop offset=".55" stop-color="#d97a4a"/>
+            <stop offset="1" stop-color="#d97a4a" stop-opacity="0"/>
+          </radialGradient>
+          <linearGradient id="sea" x1="0" y1="0" x2="0" y2="1">
+            <stop offset="0" stop-color="#2c524c"/>
+            <stop offset="1" stop-color="#0f2420"/>
+          </linearGradient>
+        </defs>
+        <circle class="hero__sun" cx="1080" cy="600" r="170" fill="url(#sun)" opacity=".9"/>
+        <g transform="translate(0 80)">
+        <!-- the Burren hills across the bay -->
+        <path d="M0 600 C120 570 220 585 330 560 S560 520 700 548 S900 600 1040 572 S1260 530 1440 560 V900 H0Z" fill="#20413b"/>
+        <path d="M0 640 C180 615 300 630 460 612 S760 600 900 622 S1180 650 1440 618 V900 H0Z" fill="#1a3833"/>
+        <!-- the bay -->
+        <rect x="0" y="655" width="1440" height="245" fill="url(#sea)"/>
+        <g stroke="#f2a678" stroke-linecap="round" opacity=".55">
+          <line x1="990" y1="682" x2="1170" y2="682" stroke-width="3"/>
+          <line x1="1020" y1="702" x2="1140" y2="702" stroke-width="2.5"/>
+          <line x1="1040" y1="722" x2="1120" y2="722" stroke-width="2"/>
+          <line x1="1060" y1="742" x2="1100" y2="742" stroke-width="1.5"/>
+        </g>
+        <g stroke="#f3ecdf" stroke-linecap="round" opacity=".12" stroke-width="1.5">
+          <line x1="120" y1="700" x2="260" y2="700"/>
+          <line x1="380" y1="730" x2="560" y2="730"/>
+          <line x1="640" y1="690" x2="760" y2="690"/>
+          <line x1="200" y1="770" x2="420" y2="770"/>
+        </g>
+        </g>
+      </svg>
       <div class="hero__inner">
         <p class="eyebrow">Singer-songwriter · Galway, Ireland</p>
         <h1 class="hero__title">Jamie<br><em>McIntyre</em></h1>
-        <p class="hero__lede">Songs from the West of Ireland. From busking on the streets of Galway to packed rooms across Ireland and the UK.</p>
+        <p class="hero__lede">Songs from the West of Ireland. From busking on Shop Street to packed rooms across Ireland and the UK.</p>
         <div class="hero__cta">
           <a class="btn btn--solid" href="#music">Listen</a>
           <a class="btn btn--ghost" href="#tour">Tour dates</a>
@@ -43,7 +109,6 @@
       </div>
       <svg class="hero__waves" viewBox="0 0 1440 160" preserveAspectRatio="none" aria-hidden="true">
         <path d="M0 96c120-28 240-28 360 0s240 28 360 0 240-28 360 0 240 28 360 0v64H0z"/>
-        <path d="M0 120c160-24 320-24 480 0s320 24 480 0 320-24 480 0v40H0z" opacity=".55"/>
       </svg>
     </section>
 
@@ -58,12 +123,12 @@
               <span>Over<br>Galway<br>Town</span>
             </div>
             <div class="release__body">
-              <p class="eyebrow">Single</p>
+              <p class="eyebrow">Single · Summer 2024</p>
               <h3>Over Galway Town</h3>
-              <p>The song that started it all — a love letter to home that travelled far beyond it, with over 50&nbsp;million views on TikTok and more than 6.5&nbsp;million streams.</p>
+              <p>Written after a night out with friends in Galway, it became the song that started it all — a love letter to home that travelled far beyond it.</p>
               <div class="stats">
                 <div><strong>50M+</strong><span>TikTok views</span></div>
-                <div><strong>6.5M+</strong><span>Streams</span></div>
+                <div><strong>7.5M+</strong><span>Spotify streams</span></div>
               </div>
             </div>
           </article>
@@ -142,8 +207,8 @@
         <h2 class="section__title" id="about-h">About</h2>
         <div class="about__text">
           <p class="about__lead">Jamie McIntyre is a singer-songwriter from Galway, writing modern folk that pairs acoustic warmth with honest, heartfelt storytelling.</p>
-          <p>He started out busking on the streets of his home city. When “Over Galway Town” took off online, it carried his voice from the West of Ireland to tens of millions of listeners — and his debut Irish tour sold out in Dublin, Limerick and Galway.</p>
-          <p>Since then he has played Electric Picnic, supported Jamie Webster, and was hand-picked by Gavin James to open for him in Paris. His EP <em>For Folk Sake</em> arrived in September 2025.</p>
+          <p>He learned his craft busking on Galway’s Shop Street — nearly every day for three years while at college. When “Over Galway Town” took off in the summer of 2024, it carried his voice from the West of Ireland to tens of millions of listeners, and his debut Irish tour sold out in Dublin, Limerick and Galway.</p>
+          <p>Since then he has played Electric Picnic, supported Jamie Webster, and was hand-picked by Gavin James to open for him in Paris. His EP <em>For Folk Sake</em> arrived in September 2025, released independently.</p>
           <ul class="highlights">
             <li>Electric Picnic</li>
             <li>Support for Gavin James, Paris</li>
@@ -151,6 +216,16 @@
             <li>Sold-out debut Irish tour</li>
           </ul>
         </div>
+      </div>
+    </section>
+    <!-- FOLLOW -->
+    <section class="follow" aria-labelledby="follow-h">
+      <div class="wrap follow__inner">
+        <div>
+          <p class="eyebrow">Stay close</p>
+          <h2 id="follow-h">New songs, new dates — first on Instagram.</h2>
+        </div>
+        <a class="btn btn--solid" href="https://www.instagram.com/jamiemcintyre_music/" target="_blank" rel="noopener">@jamiemcintyre_music</a>
       </div>
     </section>
   </main>
