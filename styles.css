@@ -182,6 +182,12 @@ h1, h2, h3 { font-family: var(--serif); font-weight: 500; line-height: 1.05; mar
 .show__date { font-family: var(--serif); font-size: 28px; }
 .show__where strong { display: block; font-family: var(--serif); font-weight: 500; font-size: 26px; }
 .show__where span { color: rgba(243,236,223,.7); font-size: 15px; }
+.show__cal {
+  display: inline-block; margin-left: 12px; font-size: 13px; font-weight: 500;
+  color: var(--rust-2); text-underline-offset: 3px;
+}
+.show__cal:hover { color: var(--paper); }
+.show__cal:focus-visible { outline: 2px solid var(--rust-2); outline-offset: 2px; }
 .show--home .show__where strong::after { content: " ★"; color: var(--rust-2); font-size: .7em; vertical-align: middle; }
 .shows__empty { font-size: 18px; }
 
@@ -233,6 +239,7 @@ h1, h2, h3 { font-family: var(--serif); font-weight: 500; line-height: 1.05; mar
   .show time { grid-column: 1 / -1; flex-direction: row; gap: 10px; align-items: baseline; }
   .show__date { font-size: 22px; }
   .show__where strong { font-size: 22px; }
+  .show__cal { display: block; margin: 0; padding: 6px 0; }
 }
 
 @media (prefers-reduced-motion: reduce) {
@@ -242,7 +249,7 @@ h1, h2, h3 { font-family: var(--serif); font-weight: 500; line-height: 1.05; mar
 }
 
 @media print {
-  .nav, .hero__scene, .hero__waves, .hero__cta, .cover, .listen__links, .show .btn, .follow, .skip { display: none !important; }
+  .nav, .hero__scene, .hero__waves, .hero__cta, .cover, .listen__links, .show .btn, .show__cal, .follow, .skip { display: none !important; }
   .hero { min-height: 0; color: var(--ink); background: none; }
   .hero__inner { padding: 0 var(--gutter) 24px; }
   .release { grid-template-columns: 1fr; break-inside: avoid; }

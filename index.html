@@ -36,14 +36,7 @@
       "https://www.deezer.com/artist/6405772"
     ],
     "track": [{ "@type": "MusicRecording", "name": "Over Galway Town" }],
-    "album": [{ "@type": "MusicAlbum", "name": "For Folk Sake", "albumReleaseType": "https://schema.org/EPRelease", "datePublished": "2025-09-26" }],
-    "event": [
-      { "@type": "MusicEvent", "name": "Jamie McIntyre — Belfast", "startDate": "2026-11-19", "location": { "@type": "Place", "name": "Limelight 1", "address": "Belfast, UK" }, "offers": { "@type": "Offer", "url": "https://www.ticketmaster.ie/artist/5585254" } },
-      { "@type": "MusicEvent", "name": "Jamie McIntyre — Dublin", "startDate": "2026-11-21", "location": { "@type": "Place", "name": "The Academy", "address": "Dublin, Ireland" }, "offers": { "@type": "Offer", "url": "https://www.ticketmaster.ie/artist/5585254" } },
-      { "@type": "MusicEvent", "name": "Jamie McIntyre — Limerick", "startDate": "2026-11-27", "location": { "@type": "Place", "name": "Live at the Big Top", "address": "Limerick, Ireland" }, "offers": { "@type": "Offer", "url": "https://www.ticketmaster.ie/artist/5585254" } },
-      { "@type": "MusicEvent", "name": "Jamie McIntyre — Cork", "startDate": "2026-11-28", "location": { "@type": "Place", "name": "Cork City Hall", "address": "Cork, Ireland" }, "offers": { "@type": "Offer", "url": "https://www.mcd.ie/artists/jamie-mcintyre" } },
-      { "@type": "MusicEvent", "name": "Jamie McIntyre — Galway", "startDate": "2026-12-18T19:00", "location": { "@type": "Place", "name": "Leisureland", "address": "Salthill, Galway, Ireland" }, "offers": { "@type": "Offer", "url": "https://www.mcd.ie/artists/jamie-mcintyre" } }
-    ]
+    "album": [{ "@type": "MusicAlbum", "name": "For Folk Sake", "albumReleaseType": "https://schema.org/EPRelease", "datePublished": "2025-09-26" }]
   }
   </script>
 </head>
@@ -170,30 +163,35 @@
         <h2 class="section__title" id="tour-h">Tour</h2>
         <p class="section__sub">Ireland, winter 2026</p>
 
-        <!-- Each show: data-date = show date (YYYY-MM-DD). Past shows hide automatically. -->
+        <!--
+          TOUR DATES — the only place to edit them.
+          Each <li> drives the visible list, the "Add to calendar" files and the
+          search-engine event data (built in main.js). Past shows hide automatically.
+          data-time is optional (24h, local Irish time).
+        -->
         <ul class="shows" id="shows">
-          <li class="show" data-date="2026-11-19">
+          <li class="show" data-date="2026-11-19" data-city="Belfast" data-venue="Limelight 1" data-place="Belfast, Northern Ireland">
             <time datetime="2026-11-19"><span class="show__day">Thu</span><span class="show__date">19 Nov</span></time>
             <div class="show__where"><strong>Belfast</strong><span>Limelight 1</span></div>
             <a class="btn btn--small" href="https://www.ticketmaster.ie/artist/5585254" target="_blank" rel="noopener" aria-label="Tickets for Belfast, 19 Nov (opens in a new tab)">Tickets</a>
           </li>
-          <li class="show" data-date="2026-11-21">
+          <li class="show" data-date="2026-11-21" data-city="Dublin" data-venue="The Academy" data-place="Dublin, Ireland">
             <time datetime="2026-11-21"><span class="show__day">Sat</span><span class="show__date">21 Nov</span></time>
             <div class="show__where"><strong>Dublin</strong><span>The Academy</span></div>
             <a class="btn btn--small" href="https://www.ticketmaster.ie/artist/5585254" target="_blank" rel="noopener" aria-label="Tickets for Dublin, 21 Nov (opens in a new tab)">Tickets</a>
           </li>
-          <li class="show" data-date="2026-11-27">
+          <li class="show" data-date="2026-11-27" data-city="Limerick" data-venue="Live at the Big Top" data-place="Limerick, Ireland">
             <time datetime="2026-11-27"><span class="show__day">Fri</span><span class="show__date">27 Nov</span></time>
             <div class="show__where"><strong>Limerick</strong><span>Live at the Big Top</span></div>
             <a class="btn btn--small" href="https://www.ticketmaster.ie/artist/5585254" target="_blank" rel="noopener" aria-label="Tickets for Limerick, 27 Nov (opens in a new tab)">Tickets</a>
           </li>
-          <li class="show" data-date="2026-11-28">
+          <li class="show" data-date="2026-11-28" data-city="Cork" data-venue="Cork City Hall" data-place="Cork, Ireland">
             <time datetime="2026-11-28"><span class="show__day">Sat</span><span class="show__date">28 Nov</span></time>
             <div class="show__where"><strong>Cork</strong><span>Cork City Hall</span></div>
             <a class="btn btn--small" href="https://www.mcd.ie/artists/jamie-mcintyre" target="_blank" rel="noopener" aria-label="Tickets for Cork, 28 Nov (opens in a new tab)">Tickets</a>
           </li>
-          <li class="show show--home" data-date="2026-12-18">
-            <time datetime="2026-12-18"><span class="show__day">Fri</span><span class="show__date">18 Dec</span></time>
+          <li class="show show--home" data-date="2026-12-18" data-time="19:00" data-city="Galway" data-venue="Leisureland" data-place="Salthill, Galway, Ireland">
+            <time datetime="2026-12-18T19:00"><span class="show__day">Fri</span><span class="show__date">18 Dec</span></time>
             <div class="show__where"><strong>Galway</strong><span>Leisureland · hometown show</span></div>
             <a class="btn btn--small" href="https://www.mcd.ie/artists/jamie-mcintyre" target="_blank" rel="noopener" aria-label="Tickets for Galway, 18 Dec (opens in a new tab)">Tickets</a>
           </li>

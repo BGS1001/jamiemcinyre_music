@@ -23,14 +23,43 @@ Settings → Pages → Source: *Deploy from a branch* → pick the branch and `/
 - **Hero photo:** the hero shows an illustrated Galway Bay sunset by default. To use a photo,
   add it as `assets/hero.jpg` (landscape, ~2400px wide) and set `data-photo="assets/hero.jpg"`
   on `<section class="hero">` in `index.html`. It appears under a dark overlay so the text stays readable.
-- **Tour dates:** edit the `<li class="show" data-date="YYYY-MM-DD">` items in `index.html`.
-  Shows whose date has passed are hidden automatically; if none remain, a
-  “follow on Instagram” message shows instead.
+- **Tour dates:** edit the `<li class="show">` items in `index.html` (marked `TOUR DATES`).
+  That list is the single source: from it the page also builds each show's
+  “Add to calendar” file and the event data search engines read. Per show, set
+  `data-date` (YYYY-MM-DD), optional `data-time` (24h Irish time), `data-city`,
+  `data-venue`, `data-place`, the visible text, and the Tickets link. Past shows hide
+  automatically; once none remain, a “follow on Instagram” message shows instead.
 - **Share image:** `assets/og.png` (1200×630) is what shows when the link is posted on social media.
   The `og:url`, `og:image` and `canonical` tags assume the GitHub Pages address
   `https://bgs1001.github.io/jamiemcinyre_music/`; change them if you use a custom domain.
 - **Streaming links:** the “Listen” row in the Music section. Add direct Spotify / Apple Music
   links there when you have them (currently Linktree, Deezer, Bandcamp).
+
+## Automated checks
+
+`npm test` runs the suite in `tests/site.test.mjs`, and GitHub Actions
+(`.github/workflows/checks.yml`) runs it on every push and pull request:
+
+- axe-core accessibility audit (WCAG 2.1 AA + best practice) of both pages at desktop and phone widths
+- no console errors and no horizontal scrolling
+- tour logic: shows stay listed through their own day, hide afterwards, fallback message
+  when none remain, calendar files are valid, event data matches the list
+- page works with JavaScript off
+- every local file a page links to exists
+
+To run locally:
+
+```bash
+npm install
+```
+
+```bash
+npx playwright install chromium
+```
+
+```bash
+npm test
+```
 
 ## Quality checks done
 
@@ -47,14 +76,12 @@ Settings → Pages → Source: *Deploy from a branch* → pick the branch and `/
 | File | Purpose |
 | --- | --- |
 | `index.html` | The page, plus schema.org data for the artist and tour dates |
-| `styles.css`, `main.js` | Styling; past-show hiding, nav, optional hero photo, fade-ins |
+| `styles.css`, `main.js` | Styling; tour logic (past-show hiding, calendar files, event data), nav, optional hero photo, fade-ins |
 | `404.html` | Page shown for broken links on GitHub Pages |
 | `assets/og.png` | Link-preview image for social media / messaging |
 | `assets/favicon.svg`, `assets/apple-touch-icon.png` | Browser and iPhone home-screen icons |
 | `robots.txt`, `sitemap.xml` | Search-engine hints (assume the GitHub Pages address) |
-
-When tour dates change, also update the matching `"event"` entries in the
-`<script type="application/ld+json">` block in `index.html`.
+| `tests/`, `package.json`, `.github/workflows/checks.yml` | Automated checks (not needed to serve the site) |
 
 ## To verify before launch
 

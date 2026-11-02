@@ -1,20 +1,89 @@
-// Hide shows whose date has passed; show a fallback message if none remain.
+// Tour list: hide past shows, add "Add to calendar" links, and publish
+// schema.org event data — all driven by the <li class="show"> items in index.html.
 (function () {
   var today = new Date();
   today.setHours(0, 0, 0, 0);
 
-  var shows = document.querySelectorAll('#shows .show');
-  var remaining = 0;
-  shows.forEach(function (show) {
-    var d = new Date(show.dataset.date + 'T23:59:59');
-    if (d < today) {
-      show.remove();
+  function pad(n) { return (n < 10 ? '0' : '') + n; }
+  function icsText(str) { return String(str).replace(/[\\;,]/g, function (c) { return '\\' + c; }); }
+  function slug(str) { return String(str).toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, ''); }
+
+  function icsFor(show) {
+    var d = show.date.replace(/-/g, '');
+    var now = new Date();
+    var stamp = now.getUTCFullYear() + pad(now.getUTCMonth() + 1) + pad(now.getUTCDate()) + 'T' +
+                pad(now.getUTCHours()) + pad(now.getUTCMinutes()) + pad(now.getUTCSeconds()) + 'Z';
+    var when;
+    if (show.time) {
+      var hm = show.time.split(':');
+      var end = (parseInt(hm[0], 10) + 3) % 24; // assume a ~3h evening
+      when = ['DTSTART;TZID=Europe/Dublin:' + d + 'T' + pad(+hm[0]) + pad(+hm[1]) + '00',
+              'DTEND;TZID=Europe/Dublin:' + d + 'T' + pad(end) + pad(+hm[1]) + '00'];
     } else {
-      remaining++;
+      var next = new Date(show.date + 'T12:00:00');
+      next.setDate(next.getDate() + 1);
+      when = ['DTSTART;VALUE=DATE:' + d,
+              'DTEND;VALUE=DATE:' + next.getFullYear() + pad(next.getMonth() + 1) + pad(next.getDate())];
     }
+    return ['BEGIN:VCALENDAR', 'VERSION:2.0', 'PRODID:-//Jamie McIntyre//Tour//EN', 'CALSCALE:GREGORIAN',
+            'BEGIN:VEVENT',
+            'UID:' + show.date + '-' + slug(show.city) + '@jamiemcintyre',
+            'DTSTAMP:' + stamp]
+      .concat(when)
+      .concat(['SUMMARY:' + icsText('Jamie McIntyre — ' + show.city),
+               'LOCATION:' + icsText(show.venue + ', ' + show.place),
+               'URL:' + show.tickets,
+               'DESCRIPTION:' + icsText('Tickets: ' + show.tickets),
+               'END:VEVENT', 'END:VCALENDAR'])
+      .join('\r\n');
+  }
+
+  var events = [];
+  var items = document.querySelectorAll('#shows .show');
+  items.forEach(function (li) {
+    if (new Date(li.dataset.date + 'T23:59:59') < today) {
+      li.remove();
+      return;
+    }
+    var link = li.querySelector('a.btn');
+    var show = {
+      date: li.dataset.date,
+      time: li.dataset.time || '',
+      city: li.dataset.city,
+      venue: li.dataset.venue,
+      place: li.dataset.place,
+      tickets: link ? link.href : ''
+    };
+    var label = li.querySelector('.show__date').textContent;
+
+    var cal = document.createElement('a');
+    cal.className = 'show__cal';
+    cal.href = 'data:text/calendar;charset=utf-8,' + encodeURIComponent(icsFor(show));
+    cal.download = 'jamie-mcintyre-' + slug(show.city) + '-' + show.date + '.ics';
+    cal.textContent = 'Add to calendar';
+    cal.setAttribute('aria-label', 'Add ' + show.city + ', ' + label + ' to your calendar');
+    li.querySelector('.show__where').appendChild(cal);
+
+    events.push({
+      '@type': 'MusicEvent',
+      name: 'Jamie McIntyre — ' + show.city,
+      startDate: show.date + (show.time ? 'T' + show.time : ''),
+      eventStatus: 'https://schema.org/EventScheduled',
+      eventAttendanceMode: 'https://schema.org/OfflineEventAttendanceMode',
+      performer: { '@type': 'MusicGroup', name: 'Jamie McIntyre' },
+      image: new URL('assets/og.png', location.href).href,
+      location: { '@type': 'Place', name: show.venue, address: show.place },
+      offers: { '@type': 'Offer', url: show.tickets }
+    });
   });
-  if (remaining === 0) {
+
+  if (events.length === 0) {
     document.getElementById('shows-empty').hidden = false;
+  } else {
+    var ld = document.createElement('script');
+    ld.type = 'application/ld+json';
+    ld.textContent = JSON.stringify(events);
+    document.head.appendChild(ld);
   }
 
   document.getElementById('year').textContent = new Date().getFullYear();

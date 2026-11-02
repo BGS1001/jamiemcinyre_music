@@ -1,0 +1,13 @@
+{
+  "name": "jamiemcintyre-site",
+  "private": true,
+  "description": "Static site for Jamie McIntyre. No build step; these scripts only run the checks.",
+  "scripts": {
+    "serve": "python3 -m http.server 8000",
+    "test": "node --test tests/*.test.mjs"
+  },
+  "devDependencies": {
+    "axe-core": "4.10.2",
+    "playwright": "1.63.0"
+  }
+}
